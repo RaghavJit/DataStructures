@@ -37,7 +37,11 @@ namespace dtstr{
     }
 
     void Stack::display(){
-
+        
+        if(top == 0 && verbose){
+            cout<<"dtstr >> Stack is empty"<<endl;
+            return;
+        }
         cout<<"[";
         for(int indx=0; indx<top; indx++){
             cout<<array->get(indx)<<", ";

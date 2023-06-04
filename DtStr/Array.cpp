@@ -44,7 +44,8 @@ namespace dtstr{
     }
 
     void Array::display(){
-        if(length == 0){
+        if(length == 0 && verbose){
+            cout<<"dtstr >> Array is empty"<<endl;
             return;
         }
         

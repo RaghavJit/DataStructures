@@ -11,6 +11,9 @@ int main(){
     sta1.push(2);
     sta1.push(3);
     sta1.pop();
+    sta1.pop();
+    sta1.pop();
+    sta1.pop();
     sta1.display();
     return 0;
 }
