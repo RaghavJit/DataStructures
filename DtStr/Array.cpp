@@ -20,40 +20,39 @@ namespace dtstr{
     }
 
     void Array::insert(int index, int value){
-
-        if(((index > length) || (index < 0)) && verbose){
-            cout<<"dtstr >> Error: Invalid Index"<<endl;
+        if((index < length) && (index >= 0)){
+            int* temp = ptr + index;
+            (*temp) = value;
             return;
         }
-
-        int* temp = ptr + index;
-        (*temp) = value;
-    
+        if(verbose){
+            cout<<"dtstr >> Error: Invalid Index"<<endl;
+        }
     }
 
     int Array::get(int index){
-        if(((index > length) || (index < 0)) && verbose){
-            cout<<"dtstr >> Error: Invalid Index"<<endl;
-            return -1;
-        }
-
-        else{
+        if((index < length) && (index >= 0)){
             int* temp = ptr + index;
             return (*temp);
         }
+        if(verbose){
+            cout<<"dtstr >> Error: Invalid Index"<<endl;
+        }
+        return -1;
     }
 
     void Array::display(){
-        if(length == 0 && verbose){
-            cout<<"dtstr >> Array is empty"<<endl;
+        if(length != 0){
+            cout<<"[";
+            for(int* temp=ptr; temp<(ptr+length); temp++){
+                cout<<(*temp)<<", ";
+            }
+            cout<<"\b\b]"<<endl;
             return;
         }
-        
-        cout<<"[";
-        for(int* temp=ptr; temp<(ptr+length); temp++){
-            cout<<(*temp)<<", ";
+        if(verbose){
+            cout<<"dtstr >> Array is empty"<<endl;
         }
-        cout<<"\b\b]"<<endl;
     }
     
 }

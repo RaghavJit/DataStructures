@@ -20,8 +20,8 @@ namespace dtstr{
             array->insert(top, value);
             top = top+1;
         }
-        else if(verbose){
-            cout<<"dtstr >> Error: Stack OverFlow!"<<endl;
+        if(verbose){
+            cout<<"dtstr >> Error: Stack OverFlow"<<endl;
         }
     }
 
@@ -30,23 +30,24 @@ namespace dtstr{
             top = top-1;
             return array->get(top);
         }
-        else if(verbose){
+        if(verbose){
             cout<<"dtstr >> Error: Stack UnderFlow"<<endl;
         }
         return -1;
     }
 
-    void Stack::display(){
-        
-        if(top == 0 && verbose){
-            cout<<"dtstr >> Stack is empty"<<endl;
+    void Stack::display(){  
+        if(top != 0){
+            cout<<"[";
+            for(int indx=0; indx<top; indx++){
+                cout<<array->get(indx)<<", ";
+            }
+            cout<<"\b\b]"<<endl;
             return;
         }
-        cout<<"[";
-        for(int indx=0; indx<top; indx++){
-            cout<<array->get(indx)<<", ";
+        if(verbose){
+            cout<<"dtstr >> Stack is empty"<<endl;
         }
-        cout<<"\b\b]"<<endl;
     }
 
 }

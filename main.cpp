@@ -15,5 +15,12 @@ int main(){
     sta1.pop();
     sta1.pop();
     sta1.display();
+
+    dtstr::DoubleEndedQueue dque(5, 0);
+    dque.enqueue_r(19);
+    dque.enqueue_r(33);
+    dque.dequeue_r();
+    dque.display();
+
     return 0;
 }
