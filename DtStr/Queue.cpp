@@ -53,18 +53,7 @@ namespace dtstr{
         }
     }
 
-    DoubleEndedQueue::DoubleEndedQueue(int size, int value, bool ver) : Queue (size, value, ver){
-        verbose = ver;
-        length = size;
-        head=0;
-        tail=0;
-
-        array = new Array(size, value, ver=false);
-
-        if(verbose){
-            cout<<"dtstr >> Queue created"<<endl; 
-        }
-    }
+    DoubleEndedQueue::DoubleEndedQueue(int size, int value, bool ver) : Queue (size, value, ver){}
 
     void DoubleEndedQueue::enqueue_f(int value){
         if(head > 0){
@@ -86,5 +75,50 @@ namespace dtstr{
             cout<<"dtstr >> Error: Queue UnderFlow"<<endl;
         }
         return -1;
+    }
+
+    CircularQueue::CircularQueue(int size, int value, bool ver){
+        length = size;
+        head=0;
+        tail=0;
+        verbose = ver;
+
+        array = new Array(size, value, ver=false);
+
+        if(verbose){
+            cout<<"dtstr >> Queue is created"<<endl;
+        }
+    }
+
+    void CircularQueue::enqueue(int value){
+        if(head >= tail){
+            array->insert(tail, value);
+            tail = (tail+1)%length;
+        }
+    }
+
+    int CircularQueue::dequeue(){
+        if(head > tail){
+            head = (head+1)%length;
+            return array->get(head-1);
+        }
+        if(verbose){
+            cout<<"dtstr >> Error: Queue UnderFlow"<<endl;
+        }
+        return -1;
+    }
+
+    void CircularQueue::display(){
+        if(head != tail){
+            cout<<"[";
+            for(int indx=head; indx!=tail; indx=(indx+1)%length){
+                cout<<array->get(indx)<<", ";
+            }
+            cout<<"\b\b]"<<endl;
+            return;
+        }
+        if(verbose){
+            cout<<"dtstr >> Queue is empty"<<endl;  
+        }
     }
 }

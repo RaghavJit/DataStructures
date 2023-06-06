@@ -28,6 +28,20 @@ namespace dtstr{
             int dequeue_r();
     };
 
+    class CircularQueue {
+        
+        protected:
+            int length;
+            int head, tail;
+            bool verbose;
+            Array* array;
+        
+        public:
+            CircularQueue(int size, int value=0, bool ver=true);
+            void enqueue(int value);
+            int dequeue();
+            void display();
+    };
 }
 
 #endif
