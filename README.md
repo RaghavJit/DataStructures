@@ -14,3 +14,30 @@ Topics to Cover:
 | Day 25-27 | 3       | Graphs             | Graph Representation, BFS, DFS, Shortest path algorithms (Dijkstra, Bellman-Ford, Floyd Warshall), MST (Prim's Algorithm, Kruskal's Algorithm) |
 | Day 28-29 | 2       | Advanced Topics    | Bit Manipulation, Segment Trees, Fenwick Trees, Suffix Arrays, Suffix Trees                         |
 | Day 30   | 1        | Practice Problems and Revision | Practice problems from each topic and revise concepts                                     |
+
+
+```mermaid
+graph TD;
+    subgraph DtStr
+    Array.h--defined in-->Array.cpp
+    Array.h==included in==>Queue.h
+    Queue.h--defined in-->Queue.cpp
+    Array.h==included in==>Stack.h
+    Stack.h--defined in-->Stack.cpp
+    end
+
+    subgraph Objs
+    Array.o--compiled from-->Array.cpp
+    Queue.o--compiled from-->Queue.cpp
+    Stack.o--compiled from-->Stack.cpp
+    end 
+
+    Array.h==included in==>dtstr.h
+    Stack.h==included in==>dtstr.h
+    Queue.h==included in==>dtstr.h
+
+    dtstr.h==included in==>main.cpp
+    main.o--compiled from-->main.cpp
+    main.o--compiles to-->main.exe
+    Objs--compiles to-->main.exe
+```
