@@ -5,12 +5,19 @@ using namespace std;
 
 namespace dtstr{
 
-    Array::Array(int size, int value, bool ver){
+    template class Array<bool>;
+    template class Array<char>;
+    template class Array<int>;
+    template class Array<float>;
+    template class Array<double>;
+    template class Array<long>;
+
+    template <typename DataType> Array<DataType>::Array(int size, DataType value, bool ver){
         verbose = ver;
         length = size;
-        ptr = (int*)malloc(length*sizeof(int));
+        ptr = (DataType*)malloc(length*sizeof(DataType));
 
-        for(int* temp=ptr; temp<(ptr+length); temp++){
+        for(DataType* temp=ptr; temp<(ptr+length); temp++){
             (*temp) = value; 
         }
 
@@ -19,9 +26,9 @@ namespace dtstr{
         }
     }
 
-    void Array::insert(int index, int value){
+    template <typename DataType> void Array<DataType>::insert(int index, DataType value){
         if((index < length) && (index >= 0)){
-            int* temp = ptr + index;
+            DataType* temp = ptr + index;
             (*temp) = value;
             return;
         }
@@ -30,9 +37,9 @@ namespace dtstr{
         }
     }
 
-    int Array::get(int index){
+    template <typename DataType> DataType Array<DataType>::get(int index){
         if((index < length) && (index >= 0)){
-            int* temp = ptr + index;
+            DataType* temp = ptr + index;
             return (*temp);
         }
         if(verbose){
@@ -41,10 +48,10 @@ namespace dtstr{
         return -1;
     }
 
-    void Array::display(){
+    template <typename DataType> void Array<DataType>::display(){
         if(length != 0){
             cout<<"[";
-            for(int* temp=ptr; temp<(ptr+length); temp++){
+            for(DataType* temp=ptr; temp<(ptr+length); temp++){
                 cout<<(*temp)<<", ";
             }
             cout<<"\b\b]"<<endl;

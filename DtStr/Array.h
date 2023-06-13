@@ -3,17 +3,17 @@
 
 namespace dtstr{
 
-    class Array{
+    template <typename DataType> class Array{
         
         private:
             int length;
-            int* ptr;
+            DataType* ptr;
             bool verbose;
         
         public:
-            Array(int size, int value=0, bool ver=true);
-            void insert(int index, int value);
-            int get(int index);
+            Array(int size, DataType value, bool ver=true);
+            void insert(int index, DataType value);
+            DataType get(int index);
             void display();
     };
 }

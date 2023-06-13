@@ -5,41 +5,41 @@
 
 namespace dtstr{
     
-    class Queue{
+    template <typename DataType> class Queue{
     
         protected:
             int length;
             int head, tail;
             bool verbose;
-            Array* array;
+            Array<DataType>* array;
         
         public:
-            Queue(int size, int value=0, bool ver=true);
-            void enqueue_r(int value);
-            int dequeue_f();
+            Queue(int size, DataType value, bool ver=true);
+            void enqueue_r(DataType value);
+            DataType dequeue_f();
             void display();
     };
 
-    class DoubleEndedQueue : public Queue {
+    template <typename DataType> class DoubleEndedQueue : public Queue<DataType> {
 
         public:
-            DoubleEndedQueue(int size, int value=0, bool ver=true);
-            void enqueue_f(int value);
-            int dequeue_r();
+            DoubleEndedQueue(int size, DataType value, bool ver=true);
+            void enqueue_f(DataType value);
+            DataType dequeue_r();
     };
 
-    class CircularQueue {
+    template <typename DataType> class CircularQueue {
         
         protected:
             int length;
             int head, tail;
             bool verbose;
-            Array* array;
+            Array<DataType>* array;
         
         public:
-            CircularQueue(int size, int value=0, bool ver=true);
-            void enqueue(int value);
-            int dequeue();
+            CircularQueue(int size, DataType value, bool ver=true);
+            void enqueue(DataType value);
+            DataType dequeue();
             void display();
     };
 }

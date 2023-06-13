@@ -5,17 +5,17 @@
 
 namespace dtstr{
     
-    class Stack{
+    template <typename DataType> class Stack{
         
         private:
             int length, top=0;
             bool verbose;
-            Array* array;
+            Array<DataType>* array;
         
         public:
-            Stack(int size, int value=0, bool ver=true);
-            void push(int value);
-            int pop();
+            Stack(int size, DataType value, bool ver=true);
+            void push(DataType value);
+            DataType pop();
             void display();
     };
 }
