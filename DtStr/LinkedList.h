@@ -32,6 +32,7 @@ namespace dtstr{
         public:
             SinglyLinkedList(bool ver=true);
             void insert(int index, DataType value);
+            DataType get(int index);
             DataType remove(int index);
             void display();
     };

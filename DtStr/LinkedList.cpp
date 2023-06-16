@@ -70,6 +70,22 @@ namespace dtstr{
         }
     }
 
+    template <typename DataType> DataType SinglyLinkedList<DataType>::get(int index){
+
+        node_1<DataType>* iter = start;
+
+        if(length == 0){
+            if(verbose){
+                cout<<"dtstr >> List is empty"<<endl;
+            }
+            return (DataType)-1;
+        }
+
+        for(int indx=0; indx < index; iter=iter->next, indx++){}
+
+        return (iter->data);
+    }
+
     template <typename DataType> DataType SinglyLinkedList<DataType>::remove(int index){
         
         DataType temp;
