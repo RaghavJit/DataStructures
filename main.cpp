@@ -1,3 +1,4 @@
+#include <iostream>
 #include "dtstr.h"
 
 int main(){
@@ -29,13 +30,14 @@ int main(){
     // cque.dequeue();
     // cque.display();
     
-    dtstr::SinglyLinkedList<int> llist;
-    llist.insert(0, 6);
-    llist.insert(1, 8);
+    // dtstr::SinglyLinkedList<int> llist;
+    // llist.insert(0, 6);
+    // llist.insert(1, 8);
     // llist.insert(5, 2);
-    llist.insert(0, 5);
-    llist.remove(2);
-    llist.display();
-
+    // llist.insert(0, 5);
+    // llist.remove(2);
+    // llist.display();
+    // std::cout<< llist.get(0);
+    
     return 0;
 }
