@@ -62,4 +62,7 @@ namespace dtstr{
         }
     }
     
-}
+    template <typename DataType> void Array<DataType>::message(bool ver){
+        verbose = ver;
+    }
+}       

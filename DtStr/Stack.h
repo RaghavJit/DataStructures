@@ -17,6 +17,11 @@ namespace dtstr{
             void push(DataType value);
             DataType pop();
             void display();
+
+            void message(bool ver);
+            bool isEmpty();
+            bool isFull();
+            int getLength();
     };
 }
 

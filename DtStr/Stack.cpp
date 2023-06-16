@@ -57,4 +57,31 @@ namespace dtstr{
         }
     }
 
+    template <typename DataType> void Stack<DataType>::message(bool ver){
+        
+        verbose = ver;
+    
+    }
+
+    template <typename DataType> bool Stack<DataType>::isEmpty(){
+       
+        if(top == 0){
+            return true;
+        }
+        return false;
+    
+    }
+
+    template <typename DataType> bool Stack<DataType>::isFull(){
+       
+        if(top == length){
+            return true;
+        }
+        return false;
+    
+    }
+    template <typename DataType> int Stack<DataType>::getLength(){
+        return length;
+    }
+
 }

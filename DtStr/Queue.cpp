@@ -61,6 +61,34 @@ namespace dtstr{
         }
     }
 
+    template <typename DataType> void Queue<DataType>::message(bool ver){
+        
+        verbose = ver;
+    
+    }
+
+    template <typename DataType> bool Queue<DataType>::isEmpty(){
+       
+        if(head == tail){
+            return true;
+        }
+        return false;
+    
+    }
+    
+    template <typename DataType> bool Queue<DataType>::isFull(){
+       
+        if((head == 0) && (tail == length)){
+            return true;
+        }
+        return false;
+    
+    }
+
+    template <typename DataType> int Queue<DataType>::getLength(){
+        return length;
+    }
+
     template class DoubleEndedQueue<bool>;
     template class DoubleEndedQueue<char>;
     template class DoubleEndedQueue<int>;
@@ -145,4 +173,23 @@ namespace dtstr{
             cout<<"dtstr >> Queue is empty"<<endl;  
         }
     }
+
+    template <typename DataType> void CircularQueue<DataType>::message(bool ver){
+        
+        verbose = ver;
+    
+    }
+
+    template <typename DataType> bool CircularQueue<DataType>::isEmpty(){
+       
+        if(head == tail){
+            return true;
+        }
+        return false;
+    
+    }
+
+    template <typename DataType> int CircularQueue<DataType>::getLength(){
+        return length;
+    } 
 }

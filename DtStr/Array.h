@@ -15,6 +15,8 @@ namespace dtstr{
             void insert(int index, DataType value);
             DataType get(int index);
             void display();
+
+            void message(bool ver);
     };
 }
 

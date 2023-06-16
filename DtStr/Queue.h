@@ -18,6 +18,11 @@ namespace dtstr{
             void enqueue_r(DataType value);
             DataType dequeue_f();
             void display();
+
+            void message(bool ver);
+            bool isEmpty();
+            bool isFull();
+            int getLength();
     };
 
     template <typename DataType> class DoubleEndedQueue : public Queue<DataType> {
@@ -41,6 +46,10 @@ namespace dtstr{
             void enqueue(DataType value);
             DataType dequeue();
             void display();
+
+            void message(bool ver);
+            bool isEmpty();
+            int getLength();
     };
 }
 
