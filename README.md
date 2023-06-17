@@ -58,6 +58,8 @@ Objs   | Directory | After building object files for each .cpp file in ../DtStr 
 dtstr.h| Header    | Is the main header file which includes all the header files in ./DtStr folder. Instead of including all the .h files in DtStr user can directly include dtstr.h and access any data structure.
 Makefile | Makefile | Is the makefile for the repository and contains the recipie for building the executable.
 main.cpp | C++ | Contains the driver code.
+-----------------------------
+
 
 ### Include Diagram
 
@@ -79,10 +81,9 @@ graph TD;
 ```
 
 ### Build Diagram
-```mermaid 
+```mermaid
+
 graph TD;
-
-
 
     subgraph DtStr
     
@@ -112,3 +113,8 @@ graph TD;
     .o --> main.exe
 ```
 
+## Avalible Data Structures
+
+1. [Queue](./Docs/Queue.md)
+1. [Stack](./Docs/Stack.md)
+1. [LinkedList](./Docs/LinkedList.md)
