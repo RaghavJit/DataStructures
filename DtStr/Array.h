@@ -9,6 +9,9 @@ namespace dtstr{
             int length;
             DataType* ptr;
             bool verbose;
+            char sorted;
+        
+            char check(int indx, char arng);
         
         public:
             Array(int size, DataType value, bool ver=true);
@@ -16,7 +19,15 @@ namespace dtstr{
             DataType get(int index);
             void display();
 
+            // void bubbleSort(char arng);
+            // void insertionSort();
+            // void selectionSort();
+            DataType linerSearch(DataType value);
+            // DataType binarySearch(DataType value); 
+
             void message(bool ver);
+            char isSorted();
+
     };
 }
 
