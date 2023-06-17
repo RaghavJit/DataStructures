@@ -36,6 +36,22 @@ namespace dtstr{
             DataType remove(int index);
             void display();
     };
+
+    template <typename DataType> class DoubleLinkedList : public SinglyLinkedList<DataType>{
+
+        private:
+            node_2<DataType>* start;
+            node_2<DataType>* end;
+            int length;
+            bool verbose;
+
+        public:
+            DoubleLinkedList(bool ver=true);
+            void insert(int index, DataType value);
+            void display();
+            void reverse();
+            // DataType remove(int index);
+    };
 }
 
 #endif

@@ -43,7 +43,7 @@ namespace dtstr{
         length = 0;
 
         if(verbose){
-            cout<<"Singly Linked List created"<<endl;
+            cout<<"Linked List created"<<endl;
         }
     }
 
@@ -133,5 +133,93 @@ namespace dtstr{
         }
     }
 
+    template class DoubleLinkedList<bool>;
+    template class DoubleLinkedList<char>;
+    template class DoubleLinkedList<int>;
+    template class DoubleLinkedList<float>;
+    template class DoubleLinkedList<double>;
+    template class DoubleLinkedList<long>;
 
+    template <typename DataType> DoubleLinkedList<DataType>::DoubleLinkedList(bool ver) : SinglyLinkedList<DataType>(ver){}
+
+    template <typename DataType> void DoubleLinkedList<DataType>::insert(int index, DataType value){
+
+        node_2<DataType>* newNode = new node_2(value);
+
+        if(index == 0){
+            newNode->next = start;
+            start = newNode;
+            if(start->next != nullptr){ // reverse linking if list not empty
+               (start->next)->prev = start;
+            }
+            length++;
+        }
+        if(index == length){
+            newNode->prev = end;
+            end = newNode;
+            if(end->prev != nullptr){ // forward linking if list not empty
+                (end->prev)->next = end;
+            }
+            length++;
+        }
+        else if((index < length) && (index > 0)){
+
+            node_2<DataType>* iter = start;
+
+            for(int indx=0; indx < index-1; iter=iter->next, indx++){}
+
+            newNode->next = iter->next; //forward linking
+            iter->next = newNode;
+
+            (iter->next)->prev = newNode; //reverse linking
+            newNode->prev = iter;
+
+            length++;
+        }
+        else if(verbose){
+            cout<<"dtstr >> Error: Invalid Index"<<endl;
+        }
+    }
+
+    template <typename DataType> void DoubleLinkedList<DataType>::display(){
+        
+        if(length != 0){
+            cout<<"[";
+            for(node_2<DataType>* iter = start; iter != nullptr; iter=iter->next){
+                cout<<(iter->data)<<", ";
+            }
+            cout<<"\b\b]"<<endl;
+            return;
+        }
+        if(verbose){
+            cout<<"dtstr >> List is empty"<<endl;
+        }
+
+    }
+
+    template <typename DataType> void DoubleLinkedList<DataType>::reverse(){
+        
+        node_2<DataType>* temp = start;
+        start = end;
+        end = temp;
+
+    }
+
+    // template <typename DataType> DataType DoubleLinkedList<DataType>::remove(int index){
+
+    //     node_2<DataType>* iter = start;
+
+    //     if(length == 0){
+    //         if(verbose){
+    //             cout<<"dtstr >> List is empty"<<endl;
+    //         }
+    //         return (DataType)-1;
+    //     }
+
+    //     for(int indx = 0; indx < index-1; iter=iter->next, indx++){}
+
+    //     if(index == 0){
+
+    //     }
+    // }
 }
