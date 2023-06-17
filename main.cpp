@@ -2,11 +2,20 @@
 #include "dtstr.h"
 
 int main(){
-    // dtstr::Array<int> arr1(5, 1);
+    dtstr::Array<int> arr1(5, 1);
 
-    // arr1.insert(0, 7);
-    // arr1.display();
+    arr1.insert(4, 3);
+    arr1.insert(3, 7);
+    arr1.insert(2, 82);
+    arr1.insert(1, 9);
+    arr1.insert(0, 10);
 
+    arr1.display();
+
+    std::cout<<arr1.linerSearch(100);
+    std::cout<<arr1.isSorted();
+    arr1.binarySearch(9);
+    
     // dtstr::Stack<int> sta1(4, 1);
     // sta1.push(1);
     // sta1.push(2);
@@ -39,5 +48,14 @@ int main(){
     // llist.display();
     // std::cout<< llist.get(0);
     
+    // dtstr::DoubleLinkedList<int> llist;
+    // llist.insert(0, 5);
+    // llist.insert(1, 4);
+    // llist.insert(2, 7);
+    // llist.insert(3, 9);
+    // llist.insert(0, 3);
+    // llist.insert(1, 0);
+    // llist.reverse();
+    // llist.display();
     return 0;
 }
