@@ -1,6 +1,6 @@
 # DataStructures
 
-This is a C/C++ library that contians Data Structure templates for all the important data types, their methods and algorithms. Everyone is free to fork and modfiy this repository. 
+This is a C++ library that contians Data Structure templates for all the important data types, their methods and algorithms. Everyone is free to fork and modfiy this repository. 
 
 ## How to use
 
