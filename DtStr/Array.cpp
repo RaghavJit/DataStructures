@@ -62,13 +62,114 @@ namespace dtstr{
         }
     }
 
-    template <typename DataType> DataType Array<DataType>::linerSearch(DataType value){
+    template <typename DataType> void Array<DataType>::bubbleSort(char arng){        
+        
+        if((arng == 'n' || arng == 'e') && verbose){
+            cout<<"dtstr >> Invalid sorting flag "<<arng<<" was given"<<endl;
+            return;
+        }
+
+        int swaps;
+        do{
+            swaps=0;
+            for(DataType* iter = ptr; iter < (ptr+length-1); iter++){
+                if((*iter > *(iter+1) && arng == 'a') || (*iter < *(iter+1) && arng == 'd')){
+                    DataType temp = *iter;
+                    *iter = *(iter+1);
+                    *(iter+1) = temp;
+
+                    swaps = swaps+1;
+                }
+            }
+        }while(swaps != 0);
+    }
+
+    template <typename DataType> void Array<DataType>::insertionSort(char arng){
+
+        if((arng == 'n' || arng == 'e') && verbose){
+            cout<<"dtstr >> Invalid sorting flag "<<arng<<" was given"<<endl;
+            return;
+        }
+
+        for(DataType* limit = ptr+1; limit <= (ptr+length-1); limit++){
+            for(DataType* iter = limit; iter > ptr; iter--){
+                
+                if((*iter > *(iter-1) && (arng == 'd')) || (*iter < *(iter-1) && (arng == 'a'))){
+                    DataType temp = *iter;
+                    *iter = *(iter-1);
+                    *(iter-1) = temp;
+                }
+
+            }
+        }
+    }
+
+    template <typename DataType> int Array<DataType>::linerSearch(DataType value){
         for(DataType* iter = ptr; iter < (ptr + length); iter++){
             if(*iter == value){
                 return (iter-ptr);
             }
         }
-        return (DataType)-1;
+        return 
+        -1;
+    }
+
+    template <typename DataType> int Array<DataType>::binarySearch(DataType value){
+        
+        int start = 0;
+        int end = length-1;
+        int mid;
+
+        char arng = this->isSorted();
+
+        if((arng == 'n' || arng == 'e') && verbose){
+            cout<<"dtstr >> Array can't be searched"<<endl;
+            return -1;
+        }
+
+        while(start <= end){
+            
+            mid = (start + end)/2;
+            DataType center = this->get(mid);
+
+            if(center == value){
+                return mid;
+            }
+            else if(center > value){
+                if(arng == 'a'){
+                    end = mid-1; //asc
+                }
+                else if(arng == 'd'){
+                    start = mid+1; //des
+                }
+            }
+            else if(center < value){
+                if(arng == 'a'){
+                    start = mid+1; //asc
+                }
+                else if(arng == 'd'){
+                end = mid-1; //des
+                }
+            }
+        }
+
+        return -1;
+    }
+
+    template <typename DataType> void Array<DataType>::reverse(){
+                
+        DataType* start = ptr;
+        DataType* end = ptr+length-1;
+        
+        for(int indx=0; indx<length/2; indx++){
+
+            DataType temp = *start;
+            *start = *end;
+            *end =  temp;
+
+            start++;
+            end--;
+        }
     }
     
     template <typename DataType> void Array<DataType>::message(bool ver){
@@ -87,6 +188,10 @@ namespace dtstr{
         return arng;
     }
 
+    template <typename DataType> int Array<DataType>::getLength(){   
+        return length;
+    }
+
     template <typename DataType> char Array<DataType>::isSorted(){   
         
         for(int indx = 0; indx < length-1; indx++){
@@ -98,5 +203,13 @@ namespace dtstr{
             }
         }
         return 'e';
+    }
+
+    template <typename DataType> DataType* Array<DataType>::operator[](int index){
+        if((index < 0) && (index >= length)){
+           cout<<"dtstr >> Invalid Index"<<endl;
+            return nullptr; 
+        }   
+        return (ptr+index);
     }
 }       

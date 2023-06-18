@@ -9,7 +9,6 @@ namespace dtstr{
             int length;
             DataType* ptr;
             bool verbose;
-            char sorted;
         
             char check(int indx, char arng);
         
@@ -19,16 +18,21 @@ namespace dtstr{
             DataType get(int index);
             void display();
 
-            // void bubbleSort(char arng);
-            // void insertionSort();
-            // void selectionSort();
-            DataType linerSearch(DataType value);
-            // DataType binarySearch(DataType value); 
+            void bubbleSort(char arng);
+            void insertionSort(char arng);
+            // void selectionSort(char arng);
+            int linerSearch(DataType value);
+            int binarySearch(DataType value);
+            void reverse(); 
 
             void message(bool ver);
+            int getLength();
             char isSorted();
 
+            DataType* operator[](int index);
     };
+    
+
 }
 
 #endif
