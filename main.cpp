@@ -4,17 +4,23 @@
 int main(){
     dtstr::Array<int> arr1(5, 1);
 
-    arr1.insert(4, 3);
-    arr1.insert(3, 7);
-    arr1.insert(2, 82);
-    arr1.insert(1, 9);
-    arr1.insert(0, 10);
-
+    arr1.insert(4, 82);
+    arr1.insert(3, 10);
+    arr1.insert(2, 9);
+    arr1.insert(1, 7);
+    arr1.insert(0, 3);
+    arr1.display();
+    // arr1.message(false);
+    arr1.reverse();
+    *arr1[0] = 88;
+    // arr1.insertionSort('d');
     arr1.display();
 
-    std::cout<<arr1.linerSearch(100);
-    std::cout<<arr1.isSorted();
-    arr1.binarySearch(9);
+    // std::cout<<arr1[0];
+    // std::cout<<arr1.linerSearch(100);
+    // std::cout<<arr1.isSorted();
+    // std::cout<<arr1.binarySearch(7);
+
     
     // dtstr::Stack<int> sta1(4, 1);
     // sta1.push(1);
