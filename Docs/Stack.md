@@ -1,6 +1,14 @@
 # Stack 
 
-Template class for [stack](https://www.javatpoint.com/data-structure-stack) data structure.
+Template class for [stack](https://www.javatpoint.com/data-structure-stack) data structure. Template class of Stack uses an object pointer of 'Array' class along with control functions to impliment stack data structure.
+
+Avalible data types for Stack:
+1. bool
+1. char
+1. int
+1. float
+1. long
+1. double
 
 ---------------------------------------------------
 Function | Arguments | Return Value | Description |
@@ -13,3 +21,5 @@ message | bool ver | void | takes bool value as argument and sets verbose equal 
 getLength | - | int | returns the length of Stack
 isEmpty | - | bool | returns true if Stack is empty otherwise false
 isFull | - | bool | returns true if Stack if full otherwise false
+
+Features with * are yet to be implimented
