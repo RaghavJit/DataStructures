@@ -4,6 +4,7 @@ Queue template class is impliment using Array template class, and control functi
 1. [Queue](https://www.javatpoint.com/data-structure-queue)
 1. DoubleEndedQueue
 1. CircularQueue
+1. LinkedListQueue
 
 Avalible data types for Queue:
 1. bool

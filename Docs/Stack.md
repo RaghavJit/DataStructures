@@ -2,6 +2,10 @@
 
 Template class for [stack](https://www.javatpoint.com/data-structure-stack) data structure. Template class of Stack uses an object pointer of 'Array' class along with control functions to impliment stack data structure.
 
+Types of Stack template classes:
+1. Stack (implimented using array)
+1. LinkedListStack (implimented using linked list)
+
 Avalible data types for Stack:
 1. bool
 1. char
