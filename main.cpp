@@ -2,19 +2,19 @@
 #include "dtstr.h"
 
 int main(){
-    dtstr::Array<int> arr1(5, 1);
+    // dtstr::Array<int> arr1(5, 1);
 
-    arr1.insert(4, 82);
-    arr1.insert(3, 10);
-    arr1.insert(2, 9);
-    arr1.insert(1, 7);
-    arr1.insert(0, 3);
-    arr1.display();
+    // arr1.insert(4, 82);
+    // arr1.insert(3, 10);
+    // arr1.insert(2, 9);
+    // arr1.insert(1, 7);
+    // arr1.insert(0, 3);
+    // arr1.display();
     // arr1.message(false);
-    arr1.reverse();
-    *arr1[0] = 88;
-    arr1.selectionSort('a');
-    arr1.display();
+    // arr1.reverse();
+    // *arr1[0] = 88;
+    // arr1.selectionSort('a');
+    // arr1.display();
 
     // std::cout<<arr1[0];
     // std::cout<<arr1.linerSearch(100);
@@ -54,14 +54,15 @@ int main(){
     // llist.display();
     // std::cout<< llist.get(0);
     
-    // dtstr::DoubleLinkedList<int> llist;
-    // llist.insert(0, 5);
-    // llist.insert(1, 4);
-    // llist.insert(2, 7);
-    // llist.insert(3, 9);
-    // llist.insert(0, 3);
-    // llist.insert(1, 0);
+    dtstr::DoubleLinkedList<int> llist;
+    llist.insert(0, 5);
+    llist.insert(1, 4);
+    llist.insert(2, 7);
+    llist.insert(0, 9);
+    llist.insert(0, 3);
+    llist.insert(1, 0);
+    llist.remove(0);
     // llist.reverse();
-    // llist.display();
+    llist.display();
     return 0;
 }

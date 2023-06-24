@@ -146,19 +146,20 @@ namespace dtstr{
 
         node_2<DataType>* newNode = new node_2(value);
 
-        if(index == 0){
-            newNode->next = start;
-            start = newNode;
-            if(start->next != nullptr){ // reverse linking if list not empty
-               (start->next)->prev = start;
+        if(index==0 || index==length){
+            if(index == 0){
+                newNode->next = start;
+                start = newNode;
+                if(start->next != nullptr){ // reverse linking if list not empty
+                (start->next)->prev = start;
+                }
             }
-            length++;
-        }
-        if(index == length){
-            newNode->prev = end;
-            end = newNode;
-            if(end->prev != nullptr){ // forward linking if list not empty
-                (end->prev)->next = end;
+            if(index == length){
+                newNode->prev = end;
+                end = newNode;
+                if(end->prev != nullptr){ // forward linking if list not empty
+                    (end->prev)->next = end;
+                }
             }
             length++;
         }
@@ -205,21 +206,30 @@ namespace dtstr{
 
     }
 
-    // template <typename DataType> DataType DoubleLinkedList<DataType>::remove(int index){
+    template <typename DataType> DataType DoubleLinkedList<DataType>::remove(int index){
 
-    //     node_2<DataType>* iter = start;
+        node_2<DataType>* iter = start;
+        DataType result;
 
-    //     if(length == 0){
-    //         if(verbose){
-    //             cout<<"dtstr >> List is empty"<<endl;
-    //         }
-    //         return (DataType)-1;
-    //     }
+        if(length == 0){
+            if(verbose){
+                cout<<"dtstr >> List is empty"<<endl;
+            }
+            return (DataType)-1;
+        }
+        
+        if(index == 0){
+            result = start->data;
+            start = start->next;
+            delete start->prev;
+            return result;
+        }
 
-    //     for(int indx = 0; indx < index-1; iter=iter->next, indx++){}
-
-    //     if(index == 0){
-
-    //     }
-    // }
+        for(int indx = 0; indx < index-1; iter=iter->next, indx++){}
+        
+        result = iter->next->data;
+        iter->next = iter->next->next;
+        (iter->next->next)->prev->prev = iter;
+        return result;
+    }
 }

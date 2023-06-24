@@ -49,8 +49,8 @@ namespace dtstr{
             DoubleLinkedList(bool ver=true);
             void insert(int index, DataType value);
             void display();
-            void reverse();
-            // DataType remove(int index);
+            void reverse(); 
+            DataType remove(int index);
     };
 }
 
