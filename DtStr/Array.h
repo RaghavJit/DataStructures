@@ -20,7 +20,7 @@ namespace dtstr{
 
             void bubbleSort(char arng);
             void insertionSort(char arng);
-            // void selectionSort(char arng);
+            void selectionSort(char arng);
             int linerSearch(DataType value);
             int binarySearch(DataType value);
             void reverse(); 

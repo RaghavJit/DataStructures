@@ -13,7 +13,7 @@ int main(){
     // arr1.message(false);
     arr1.reverse();
     *arr1[0] = 88;
-    // arr1.insertionSort('d');
+    arr1.selectionSort('a');
     arr1.display();
 
     // std::cout<<arr1[0];

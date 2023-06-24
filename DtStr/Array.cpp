@@ -104,6 +104,27 @@ namespace dtstr{
         }
     }
 
+    template <typename DataType> void Array<DataType>::selectionSort(char arng){
+        
+        if((arng == 'n' || arng == 'e') && verbose){
+            cout<<"dtstr >> Invalid sorting flag "<<arng<<" was given"<<endl;
+            return;
+        }
+
+        for(DataType* limit = ptr; limit <= (ptr+length-1); limit++){
+            DataType* largest = limit;
+            for(DataType* iter = limit+1; iter <= (ptr+length-1); iter++){
+
+                if((*largest < *iter && arng == 'd') || (*largest > *iter && arng == 'a')){
+                    largest = iter;
+                }
+            }
+            DataType temp = *largest;
+            *largest = *limit;
+            *limit = temp;
+        }
+    }
+
     template <typename DataType> int Array<DataType>::linerSearch(DataType value){
         for(DataType* iter = ptr; iter < (ptr + length); iter++){
             if(*iter == value){
