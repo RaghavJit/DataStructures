@@ -37,3 +37,27 @@ get | int index | DataType | returns data stored at node with specified index in
 remove | int index | DataType | removes a node form the list and returns the data of removed node
 display | - | void | print data of all the nodes in linked list to the console in cronological order
 
+### Indexing
+Nodes of linked list can be access by their index using **[]** operator. Using this pointer on linked list will return a pointer to the value stored at the index in linked list.
+```
+dtstr::SinglyLinkedList llist[0] // return pointer to 'data' of first node in linked list
+```
+
+### Iterating
+To iterate the linked list respective type of iterator object can be used. To iterate singly linked list and double linked list **'iterSL'** and **'iterDL'** is used respectivly. 
+```
+dtstr::iterSL<DataType> head(llist.start); // constructor of iterSL 
+```
+The 'DataType' of iter must match the 'DataType' of linked list
+
+```
+head++; // incriments the iter to next node 
+head--; // decriment the iter to next node but only in iterDL
+
+head->data // data stored at iter can be accessed using -> pointer
+```
+
+### Assingment
+```
+*head // iter can be used to derefrenced, to access the node it's pointing to
+```
