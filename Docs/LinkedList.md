@@ -18,7 +18,8 @@ Is template class for simple singly linked list which makes use of node_1 type o
 Function | Arguments | Return Value | Description |
 ---------|-----------|--------------|-------------|
 SinglyLinkedList | bool ver | - | Initializes a singly linked list with a null pointer
-insert | int index, DataType value | void | inserts a node_1 object with 'data'=value at specifed index in list
+insert | int index, DataType value | void | inserts a **new** node_1 object with 'data'=value at specifed index in list
+replace | int index, DataType value | void | over-wirtes the value of node at specified index
 get | int index | DataType | returns data stored at node with specified index in list 
 remove | int index | DataType | removes a node form the list and returns the data of removed node
 display | - | void | print data of all the nodes in linked list to the console in cronological order
