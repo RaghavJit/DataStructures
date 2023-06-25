@@ -2,6 +2,7 @@
 #define STACK_H
 
 #include "Array.h"
+#include "LinkedList.h"
 
 namespace dtstr{
     
@@ -22,6 +23,20 @@ namespace dtstr{
             bool isEmpty();
             bool isFull();
             int getLength();
+    };
+
+    template <typename DataType> class DynamicStack{
+
+        private:
+            int length;
+            bool verbose;
+            DoubleLinkedList<DataType>* llist;
+
+        public:
+            DynamicStack(bool ver=true);
+            void push(DataType value);
+            DataType pop();
+            void display();
     };
 }
 

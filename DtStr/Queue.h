@@ -2,6 +2,7 @@
 #define QUEUE_H
 
 #include "Array.h"
+#include "LinkedList.h"
 
 namespace dtstr{
     
@@ -50,6 +51,20 @@ namespace dtstr{
             void message(bool ver);
             bool isEmpty();
             int getLength();
+    };
+
+    template <typename DataType> class DynamicQueue{
+
+        private:
+            int length;
+            bool verbose;
+            DoubleLinkedList<DataType>* llist;
+
+        public:
+            DynamicQueue(bool ver=true);
+            void enqueue(DataType value);
+            DataType dequeue();
+            void display();
     };
 }
 

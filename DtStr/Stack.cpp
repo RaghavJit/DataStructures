@@ -84,4 +84,38 @@ namespace dtstr{
         return length;
     }
 
+    template class DynamicStack<bool>;
+    template class DynamicStack<char>;
+    template class DynamicStack<int>;
+    template class DynamicStack<float>;
+    template class DynamicStack<double>;
+    template class DynamicStack<long>;
+
+    template <typename DataType> DynamicStack<DataType>::DynamicStack(bool ver){
+
+        length = 0;
+        verbose = ver;
+        llist = new DoubleLinkedList<DataType>(false);
+
+        if(verbose){
+            cout<<"dtstr >> Stack created"<<endl;
+        } 
+    }
+
+    template <typename DataType> void DynamicStack<DataType>::push(DataType value){
+        llist->insert(0, value);
+        length = length+1;
+    }
+
+    template <typename DataType> DataType DynamicStack<DataType>::pop(){
+        DataType result = (llist->get(0));
+        llist->remove(0);
+        length = length-1;
+        return result;
+    }
+
+    template <typename DataType> void DynamicStack<DataType>::display(){
+        llist->display();
+    }
+
 }

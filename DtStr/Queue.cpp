@@ -192,4 +192,39 @@ namespace dtstr{
     template <typename DataType> int CircularQueue<DataType>::getLength(){
         return length;
     } 
+
+    template class DynamicQueue<bool>;
+    template class DynamicQueue<char>;
+    template class DynamicQueue<int>;
+    template class DynamicQueue<float>;
+    template class DynamicQueue<double>;
+    template class DynamicQueue<long>;
+
+    template <typename DataType> DynamicQueue<DataType>::DynamicQueue(bool ver){
+
+        length = 0;
+        verbose = ver;
+        llist = new DoubleLinkedList<DataType>(false);
+
+        if(verbose){
+            cout<<"dtstr >> Queue created"<<endl;
+        } 
+    }
+
+    template <typename DataType> void DynamicQueue<DataType>::enqueue(DataType value){
+        llist->insert(0, value);
+        length = length+1;
+    }
+    
+    template <typename DataType> DataType DynamicQueue<DataType>::dequeue(){
+        int newlen = length-1;
+        DataType result = (llist->get(newlen));
+        llist->remove(newlen);
+        length = newlen;
+        return result;
+    }
+
+    template <typename DataType> void DynamicQueue<DataType>::display(){
+        llist->display();
+    }
 }
