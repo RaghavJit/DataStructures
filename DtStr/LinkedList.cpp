@@ -17,6 +17,30 @@ namespace dtstr{
         next = nullptr;
     }
 
+    template class iter<bool>;
+    template class iter<char>;
+    template class iter<int>;
+    template class iter<float>;
+    template class iter<double>;
+    template class iter<long>;
+
+    template <typename DataType> iter<DataType>::iter(node_1<DataType>* node){
+        nodeptr = node;
+    }
+
+    template <typename DataType> iter<DataType> iter<DataType>::operator++(int){
+        nodeptr = nodeptr->next;
+        return *this;
+    }
+
+    template <typename DataType> node_1<DataType>* iter<DataType>::operator->(){
+        return nodeptr;
+    }
+    
+    template <typename DataType> node_1<DataType> iter<DataType>::operator*(){
+        return *nodeptr;
+    }
+
     template class node_2<bool>;
     template class node_2<char>;
     template class node_2<int>;
@@ -68,6 +92,12 @@ namespace dtstr{
         else if(verbose){
             cout<<"dtstr >> Error: Invalid Index"<<endl;
         }
+    }
+
+    template <typename DataType> void SinglyLinkedList<DataType>::replace(int index, DataType value){
+        node_1<DataType>* iter = start;
+        for(int indx = 0; indx < index; iter=iter->next, indx++){}
+        iter->data = value;
     }
 
     template <typename DataType> DataType SinglyLinkedList<DataType>::get(int index){
@@ -133,6 +163,13 @@ namespace dtstr{
         }
     }
 
+    template <typename DataType> DataType* SinglyLinkedList<DataType>::operator[](int index){
+        node_1<DataType>* iter = start;
+        for(int indx=0; indx < index; iter=iter->next, indx++){}
+        DataType* temp = &(iter->data);
+        return temp;
+    }
+
     template class DoubleLinkedList<bool>;
     template class DoubleLinkedList<char>;
     template class DoubleLinkedList<int>;
@@ -180,6 +217,28 @@ namespace dtstr{
         else if(verbose){
             cout<<"dtstr >> Error: Invalid Index"<<endl;
         }
+    }
+
+    template <typename DataType> void DoubleLinkedList<DataType>::replace(int index, DataType value){
+        node_2<DataType>* iter = start;
+        for(int indx = 0; indx < index; iter=iter->next, indx++){}
+        iter->data = value;
+    }
+
+    template <typename DataType> DataType DoubleLinkedList<DataType>::get(int index){
+
+        node_2<DataType>* iter = start;
+
+        if(length == 0){
+            if(verbose){
+                cout<<"dtstr >> List is empty"<<endl;
+            }
+            return (DataType)-1;
+        }
+
+        for(int indx=0; indx < index; iter=iter->next, indx++){}
+
+        return (iter->data);
     }
 
     template <typename DataType> void DoubleLinkedList<DataType>::display(){
