@@ -17,27 +17,27 @@ namespace dtstr{
         next = nullptr;
     }
 
-    template class iter<bool>;
-    template class iter<char>;
-    template class iter<int>;
-    template class iter<float>;
-    template class iter<double>;
-    template class iter<long>;
+    template class iterSL<bool>;
+    template class iterSL<char>;
+    template class iterSL<int>;
+    template class iterSL<float>;
+    template class iterSL<double>;
+    template class iterSL<long>;
 
-    template <typename DataType> iter<DataType>::iter(node_1<DataType>* node){
+    template <typename DataType> iterSL<DataType>::iterSL(node_1<DataType>* node){
         nodeptr = node;
     }
 
-    template <typename DataType> iter<DataType> iter<DataType>::operator++(int){
+    template <typename DataType> iterSL<DataType> iterSL<DataType>::operator++(int){
         nodeptr = nodeptr->next;
         return *this;
     }
 
-    template <typename DataType> node_1<DataType>* iter<DataType>::operator->(){
+    template <typename DataType> node_1<DataType>* iterSL<DataType>::operator->(){
         return nodeptr;
     }
     
-    template <typename DataType> node_1<DataType> iter<DataType>::operator*(){
+    template <typename DataType> node_1<DataType> iterSL<DataType>::operator*(){
         return *nodeptr;
     }
 
@@ -52,6 +52,35 @@ namespace dtstr{
         data = value;
         next = nullptr;
         prev = pre;
+    }
+
+    template class iterDL<bool>;
+    template class iterDL<char>;
+    template class iterDL<int>;
+    template class iterDL<float>;
+    template class iterDL<double>;
+    template class iterDL<long>;
+
+    template <typename DataType> iterDL<DataType>::iterDL(node_2<DataType>* node){
+        nodeptr = node;
+    }
+
+    template <typename DataType> iterDL<DataType> iterDL<DataType>::operator++(int){
+        nodeptr = nodeptr->next;
+        return *this;
+    }
+
+    template <typename DataType> iterDL<DataType> iterDL<DataType>::operator--(int){
+        nodeptr = nodeptr->prev;
+        return *this;
+    }
+
+    template <typename DataType> node_2<DataType>* iterDL<DataType>::operator->(){
+        return nodeptr;
+    }
+    
+    template <typename DataType> node_2<DataType> iterDL<DataType>::operator*(){
+        return *nodeptr;
     }
 
     template class SinglyLinkedList<bool>;

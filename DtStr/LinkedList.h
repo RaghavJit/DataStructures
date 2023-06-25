@@ -14,6 +14,16 @@ namespace dtstr{
             node_1<DataType>& operator++(int);
     };
 
+    template <typename DataType> class iterSL{
+        public:
+            node_1<DataType>* nodeptr;
+
+            iterSL(node_1<DataType>* node);
+            iterSL<DataType> operator++(int);
+            node_1<DataType>* operator->();
+            node_1<DataType> operator*();
+    };
+
     template <typename DataType> class node_2{
         
         public:
@@ -24,15 +34,17 @@ namespace dtstr{
             node_2(DataType value, node_2* pre=nullptr);
     };
 
-    template <typename DataType> class iter{
+    template <typename DataType> class iterDL{
         public:
-            node_1<DataType>* nodeptr;
+            node_2<DataType>* nodeptr;
 
-            iter(node_1<DataType>* node);
-            iter<DataType> operator++(int);
-            node_1<DataType>* operator->();
-            node_1<DataType> operator*();
+            iterDL(node_2<DataType>* node);
+            iterDL<DataType> operator++(int);
+            iterDL<DataType> operator--(int);
+            node_2<DataType>* operator->();
+            node_2<DataType> operator*();
     };
+
 
     template <typename DataType> class SinglyLinkedList{
 
