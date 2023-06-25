@@ -320,4 +320,11 @@ namespace dtstr{
         (iter->next->next)->prev->prev = iter;
         return result;
     }
+
+    template <typename DataType> DataType* DoubleLinkedList<DataType>::operator[](int index){
+        node_2<DataType>* iter = start;
+        for(int indx=0; indx < index; iter=iter->next, indx++){}
+        DataType* temp = &(iter->data);
+        return temp;
+    }
 }

@@ -81,6 +81,9 @@ namespace dtstr{
             DataType remove(int index);
             void display();
             void reverse(); 
+
+            DataType* operator[](int index);
+
     };
 }
 
