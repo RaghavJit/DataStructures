@@ -18,12 +18,12 @@ insert | int index, DataType value | void | inserts the given value on the speci
 get | int index | DataType | returns the value at specified index
 display | - | void | prints the array to console
 linearSearch | DataType value | int | returns the index of the specified value (impliments linera search)
-binarySearch* | DataType value | int | returns the index of the specified value usig binary search
+binarySearch | DataType value | int | returns the index of the specified value usig binary search
 message | bool ver | void | takes bool value as argument and sets verbose equal to it.
 isSorted | - | char | returns 'a' if array is sorted in ascending order, 'd' for descending, 'n' for not sorted and 'e' if all elements are equal
-bubbleSort* | char arng | void | sorts the array using [bubble sort](https://www.geeksforgeeks.org/bubble-sort/) according to the given flag ('a' for ascending and 'd' for descending)
-insertionSort* | char arng | void | sorts the array using [insertion sort](https://www.geeksforgeeks.org/insertion-sort/) ('a' for ascending and 'd' for descending)
-selectionSort* | char arng | void | sorts the array using [selection sort](https://www.geeksforgeeks.org/selection-sort/) ('a' for ascending and 'd' for descending)
+bubbleSort | char arng | void | sorts the array using [bubble sort](https://www.geeksforgeeks.org/bubble-sort/) according to the given flag ('a' for ascending and 'd' for descending)
+insertionSort | char arng | void | sorts the array using [insertion sort](https://www.geeksforgeeks.org/insertion-sort/) ('a' for ascending and 'd' for descending)
+selectionSort | char arng | void | sorts the array using [selection sort](https://www.geeksforgeeks.org/selection-sort/) ('a' for ascending and 'd' for descending)
 
 Features with * are yet to be implimented 
 
