@@ -58,6 +58,7 @@ Objs   | Directory | After building object files for each .cpp file in ../DtStr 
 dtstr.h| Header    | Is the main header file which includes all the header files in ./DtStr folder. Instead of including all the .h files in DtStr user can directly include dtstr.h and access any data structure.
 Makefile | Makefile | Is the makefile for the repository and contains the recipie for building the executable.
 main.cpp | C++ | Contains the driver code.
+.gitignore | gitignore | contains binary files, not ment for version control
 -----------------------------
 
 
