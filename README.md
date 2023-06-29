@@ -24,7 +24,7 @@ make
 ```
 make clean
 ```
-**Make sure to clean all the .o and .exe files before rebuilding the project after editing.**
+**Make sure to clean all the .o and .exe files before rebuilding the project after editing .h files as any modifications in them are not taken in account by Makefile.**
 
 ### Usage
 
