@@ -192,6 +192,17 @@ namespace dtstr{
         }
     }
 
+    template <typename DataType> void SinglyLinkedList<DataType>::message(bool ver){
+        verbose = ver;
+    }
+
+    template <typename DataType> bool SinglyLinkedList<DataType>::isEmpty(){
+        if(length == 0){
+            return true;
+        }
+        return false;
+    }
+
     template <typename DataType> DataType* SinglyLinkedList<DataType>::operator[](int index){
         node_1<DataType>* iter = start;
         for(int indx=0; indx < index; iter=iter->next, indx++){}
@@ -206,7 +217,16 @@ namespace dtstr{
     template class DoubleLinkedList<double>;
     template class DoubleLinkedList<long>;
 
-    template <typename DataType> DoubleLinkedList<DataType>::DoubleLinkedList(bool ver) : SinglyLinkedList<DataType>(ver){}
+    template <typename DataType> DoubleLinkedList<DataType>::DoubleLinkedList(bool ver){
+        verbose = ver;
+        start = nullptr;
+        end = nullptr;
+        length = 0;
+
+        if(verbose){
+            cout<<"Linked List created"<<endl;
+        }
+    }
 
     template <typename DataType> void DoubleLinkedList<DataType>::insert(int index, DataType value){
 
@@ -236,9 +256,9 @@ namespace dtstr{
             for(int indx=0; indx < index-1; iter=iter->next, indx++){}
 
             newNode->next = iter->next; //forward linking
-            iter->next = newNode;
-
             (iter->next)->prev = newNode; //reverse linking
+
+            iter->next = newNode;
             newNode->prev = iter;
 
             length++;
@@ -274,7 +294,9 @@ namespace dtstr{
         
         if(length != 0){
             cout<<"[";
-            for(node_2<DataType>* iter = start; iter != nullptr; iter=iter->next){
+            node_2<DataType>* iter = start;
+
+            for(int indx = 0; indx < length; iter=iter->next, indx++){
                 cout<<(iter->data)<<", ";
             }
             cout<<"\b\b]"<<endl;
@@ -321,10 +343,72 @@ namespace dtstr{
         return result;
     }
 
+    template <typename DataType> void DoubleLinkedList<DataType>::message(bool ver){
+        verbose = ver;
+    }
+
+    template <typename DataType> bool DoubleLinkedList<DataType>::isEmpty(){
+        if(length == 0){
+            return true;
+        }
+        return false;
+    }
+
     template <typename DataType> DataType* DoubleLinkedList<DataType>::operator[](int index){
         node_2<DataType>* iter = start;
         for(int indx=0; indx < index; iter=iter->next, indx++){}
         DataType* temp = &(iter->data);
         return temp;
+    }
+
+    template class CircularLinkedList<bool>;
+    template class CircularLinkedList<char>;
+    template class CircularLinkedList<int>;
+    template class CircularLinkedList<float>;
+    template class CircularLinkedList<double>;
+    template class CircularLinkedList<long>;    
+
+    template <typename DataType> CircularLinkedList<DataType>::CircularLinkedList(bool ver) : DoubleLinkedList<DataType>(ver){}
+
+    template <typename DataType> void CircularLinkedList<DataType>::insert(int index, DataType value){
+        
+        node_2<DataType>* newNode = new node_2<DataType>(value);
+
+        if(DoubleLinkedList<DataType>::length == 0 || index%DoubleLinkedList<DataType>::length == 0){
+
+            if(DoubleLinkedList<DataType>::length == 0){
+                DoubleLinkedList<DataType>::start = newNode;
+                newNode->next = newNode;
+                newNode->prev = newNode;
+            }
+
+            if(DoubleLinkedList<DataType>::length != 0 && index%DoubleLinkedList<DataType>::length == 0){
+                newNode->next = DoubleLinkedList<DataType>::start;
+                (DoubleLinkedList<DataType>::start->prev)->next = newNode;   
+                newNode->prev = DoubleLinkedList<DataType>::start->prev;
+                DoubleLinkedList<DataType>::start->prev = newNode;
+
+                if(index == 0){
+                    DoubleLinkedList<DataType>::start = newNode;
+                }
+
+            }
+
+            DoubleLinkedList<DataType>::length++;
+
+            return;
+        }
+
+        node_2<DataType>* iter = DoubleLinkedList<DataType>::start;
+
+        for(int indx=0; indx < (index%DoubleLinkedList<DataType>::length)-1; iter=iter->next, indx++){}
+
+        newNode->next = iter->next; //forward linking
+        (iter->next)->prev = newNode; //reverse linking
+
+        iter->next = newNode;
+        newNode->prev = iter;
+
+        DoubleLinkedList<DataType>::length++;
     }
 }
