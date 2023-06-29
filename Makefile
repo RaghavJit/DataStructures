@@ -1,16 +1,18 @@
 LIB_SOURCES := $(wildcard ./DtStr/*.cpp)
 LIB_OBJECTS := $(patsubst ./DtStr/%.cpp, ./Objs/%.o, $(LIB_SOURCES))
 
+CPPFLAGS = -Wall -Wextra
+
 all:main.exe
 
 main.exe: $(LIB_OBJECTS) main.o 
-	g++ $^ -o $@
+	g++ $(CPPFLAGS) $^ -o $@
 
 main.o: main.cpp
-	g++ -c $^
+	g++ $(CPPFLAGS) -c $^
 
 ./Objs/%.o: ./DtStr/%.cpp
-	g++ -c $< -o $@
+	g++ $(CPPFLAGS) -c $< -o $@
 
 clean:
 	rm ./Objs/* ./*.exe *.o
