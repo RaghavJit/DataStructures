@@ -23,6 +23,9 @@ replace | int index, DataType value | void | over-wirtes the value of node at sp
 get | int index | DataType | returns data stored at node with specified index in list 
 remove | int index | DataType | removes a node form the list and returns the data of removed node
 display | - | void | print data of all the nodes in linked list to the console in cronological order
+message | bool ver | void | takes bool value as argument and sets verbose equal to it.
+isEmpty | - | bool | returns true if list is empty otherwise false
+---------------------------------------------------
 
 ## DoubleLinkedList
 
@@ -36,6 +39,9 @@ insert | int index, DataType value | void | inserts a node_2 object with 'data'=
 get | int index | DataType | returns data stored at node with specified index in list 
 remove | int index | DataType | removes a node form the list and returns the data of removed node
 display | - | void | print data of all the nodes in linked list to the console in cronological order
+message | bool ver | void | takes bool value as argument and sets verbose equal to it.
+isEmpty | - | bool | returns true if list is empty otherwise false
+---------------------------------------------------
 
 ### Indexing
 Nodes of linked list can be access by their index using **[]** operator. Using this pointer on linked list will return a pointer to the value stored at the index in linked list.
