@@ -45,19 +45,19 @@ int main(){
     // cque.dequeue();
     // cque.display();
     
-    dtstr::SinglyLinkedList<int> llist;
-    llist.insert(0, 6);
-    llist.insert(1, 8);
+    // dtstr::SinglyLinkedList<int> llist;
+    // llist.insert(0, 6);
+    // llist.insert(1, 8);
     // llist.insert(5, 2);
     // llist.insert(0, 5);
     // llist.remove(2);
     // dtstr::node_1<int>* ptr = new dtstr::node_1<int>(5);
     // dtstr::node_1<int> mynode(5);
     // dtstr::node1ptr<int> head;
-    dtstr::iterSL<int> head(llist.start);
-    head++;   
-    std::cout<<head->data; 
-    (*head).data;   
+    // dtstr::iterSL<int> head(llist.start);
+    // head++;   
+    // std::cout<<head->data; 
+    // (*head).data;   
 
     // dtstr::DoubleLinkedList<int> llist;
     // llist.insert(0, 5);
@@ -69,5 +69,10 @@ int main(){
     // llist.remove(0);
     // llist.reverse();
     // llist.display();
+
+    dtstr::BinaryTree<int> btree(false);
+    btree.insert(5); 
+    btree.insert(4, "xl");
+    btree.insert(6, "xr");
     return 0;
 }

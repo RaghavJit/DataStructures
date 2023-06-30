@@ -2,6 +2,7 @@
 #define BINARYTREE_H
 
 #include <string>
+#include "Stack.h"
 
 namespace dtstr{
 
@@ -22,29 +23,31 @@ namespace dtstr{
             node<DataType>* root;
             int size;
             bool verbose;
-        
+            node<DataType>* getChild(node<DataType>* target, char child);
+            node<DataType>* getParent(std::string position);
+
         public:
             BinaryTree(bool ver=true);
-            void insert(string position, DataType value);
-            DataType remove(string position);
-            DataType replace(string position);
-            DataType get(string position);
+            void insert(DataType value ,std::string position="x", char child='l');
+            DataType remove(std::string position);
+            DataType replace(std::string position);
+            DataType get(std::string position);
             DynamicStack<DataType>* preOrder();
             DynamicStack<DataType>* inOrder();
             DynamicStack<DataType>* postOrder();
     };
 
-    template <typename DataType> class BinarySearchTree : public BinaryTree{
+    template <typename DataType> class BinarySearchTree : public BinaryTree<DataType>{
         
         public:
             BinarySearchTree(bool ver=true);
             void insert(DataType value);
-            DataType remove(string position);
-            string search(DataType value);
+            DataType remove(std::string position);
+            std::string search(DataType value);
             void balance(); 
     };
 
-    template <typename DataType> class Heap : public BinaryTree{
+    template <typename DataType> class Heap : public BinaryTree<DataType>{
         
         public:
             Heap(char type, bool ver=true);
