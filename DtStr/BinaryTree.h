@@ -30,7 +30,7 @@ namespace dtstr{
             BinaryTree(bool ver=true);
             void insert(DataType value ,std::string position="x", char child='l');
             DataType remove(std::string position);
-            DataType replace(std::string position);
+            DataType replace(std::string position, DataType value);
             DataType get(std::string position);
             DynamicStack<DataType>* preOrder();
             DynamicStack<DataType>* inOrder();

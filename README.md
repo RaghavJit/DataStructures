@@ -2,6 +2,14 @@
 
 This is a C++ library that contians Data Structure templates for all the important data types, their methods and algorithms. Everyone is free to fork and modfiy this repository. 
 
+## Avalible Data Structures
+
+1. [Array](./Docs/Array.md)
+1. [Queue](./Docs/Queue.md)
+1. [Stack](./Docs/Stack.md)
+1. [LinkedList](./Docs/LinkedList.md)
+1. [BinaryTree](./Docs/BinaryTree.md) 
+
 ## How to use
 
 ### Pre-Reqizits
@@ -71,12 +79,10 @@ graph TD;
     Array.h --> Stack.h
     Array.h --> Queue.h
     LinkedList.h
+    Stack.h --> BinaryTree.h
     end
 
-    Array.h --> dtstr.h
-    Stack.h --> dtstr.h
-    Queue.h --> dtstr.h
-    LinkedList.h --> dtstr.h
+    DtStr --> dtstr.h
 
     dtstr.h --> main.cpp
 ```
@@ -113,9 +119,3 @@ graph TD;
     main.o --> main.exe
     .o --> main.exe
 ```
-
-## Avalible Data Structures
-
-1. [Queue](./Docs/Queue.md)
-1. [Stack](./Docs/Stack.md)
-1. [LinkedList](./Docs/LinkedList.md)
