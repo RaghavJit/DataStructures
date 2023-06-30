@@ -2,3 +2,4 @@
 #include "./DtStr/Stack.h"
 #include "./DtStr/Queue.h"
 #include "./DtStr/LinkedList.h"
+#include "./DtStr/BinaryTree.h"

@@ -66,8 +66,5 @@ int main(){
     llist.insert(0, 9);
     llist.insert(0, 3);
     llist.insert(1, 0);
-    // llist.remove(0);
-    // llist.reverse();
-    llist.display();
     return 0;
 }
