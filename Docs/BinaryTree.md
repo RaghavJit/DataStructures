@@ -23,9 +23,9 @@ insert | DataType value, string position, char child | void | inserts the given 
 remove | string position | DataType | removes the node at given position
 replace | string position, DataType vale | DataType | replaces the node at given position with specified data
 remove | string position | DataType | gets the data at the specified node
-preOrder | - | DynamicStack* | returns a pointer to a dynamic stack containing the [pre-order]() treversal of the tree
-inOrder | - | DynamicStack* | returns a pointer to a dynamic stack containing the [in-order]() treversal of the tree
-postOrder | - | DynamicStack* | returns a pointer to a dynamic stack containing the [post-order]() treversal of the tree
+preOrder | node* | void | takes a root node as parameter and prints [pre-order]() treversal of the tree to console, reletive to root node.
+inOrder | node* | void | takes a root node as parameter and prints [in-order]() treversal of the tree to console, reletive to root node.
+postOrder | node* | void | takes a root node as parameter and prints [post-order]() treversal of the tree to console, reletive to root node.
 ---------------------------------------------------
 
 
