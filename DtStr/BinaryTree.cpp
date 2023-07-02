@@ -18,7 +18,7 @@ namespace dtstr{
         right = rgt;
         left = lft;
     }
-
+    
     template class BinaryTree<bool>;
     template class BinaryTree<char>;
     template class BinaryTree<int>;
@@ -46,10 +46,23 @@ namespace dtstr{
         return target;
     }    
 
-    template <typename DataType> node<DataType>* BinaryTree<DataType>::getParent(string position){
+    template <typename DataType> void BinaryTree<DataType>::setChild(node<DataType>* prntNode, node<DataType>* chldNode, char child){
+        if(child == 'l'){
+            prntNode->left = chldNode;
+        }
+        if(child == 'r'){
+            prntNode->right = chldNode;
+        }
+    }
+
+    template <typename DataType> node<DataType>* BinaryTree<DataType>::getParent(string position, char stop){
         node<DataType>* pos = root;
         bool breakLoop = false;
-        for(char ch : position.substr(1, position.length()-2)){
+        int end = position.length()-1;
+        if(stop == 'p'){ // default case
+            end = end - 1;
+        }
+        for(char ch : position.substr(1, end)){
             switch (ch){
             case 'l':
                 pos = pos->left;
@@ -74,10 +87,9 @@ namespace dtstr{
     template <typename DataType> void BinaryTree<DataType>::insert(DataType value, string position, char child){
         
         node<DataType>* newNode = new node(value);
-        node<DataType>* temp = getChild(newNode, child); 
         
         if(position == "x"){
-            temp = root;
+            setChild(newNode, root, child);
             root = newNode;
             return;
         }
@@ -86,12 +98,52 @@ namespace dtstr{
         node<DataType>* target = getChild(parent, position.back());
         
         newNode->parent = parent;
+
+        setChild(parent, newNode, position.back());
+        setChild(newNode, target, child);
         
-        temp = target;
         if(target != nullptr){ 
             target->parent = newNode;
         }
     }
 
-    
+    template <typename DataType> void BinaryTree<DataType>::replace(string position, DataType value){
+        node<DataType>* target = getParent(position, 't');
+        target->data = value;
+    }
+
+    template <typename DataType> DataType BinaryTree<DataType>::get(string position){
+        node<DataType>* target = getParent(position, 't');
+        return target->data;
+    }
+
+    template <typename DataType> void BinaryTree<DataType>::preOrder(node<DataType>* head){
+
+        if(head == nullptr){
+            return;
+        }
+        cout<<head->data;
+        this->preOrder(head->left);
+        this->preOrder(head->right);
+    }
+
+    template <typename DataType> void BinaryTree<DataType>::inOrder(node<DataType>* head){
+
+        if(head == nullptr){
+            return;
+        }
+        this->inOrder(head->left);
+        cout<<head->data;
+        this->inOrder(head->right);
+    }
+
+    template <typename DataType> void BinaryTree<DataType>::postOrder(node<DataType>* head){
+
+        if(head == nullptr){
+            return;
+        }
+        this->postOrder(head->left);
+        this->postOrder(head->right);
+        cout<<head->data;
+    }
 }

@@ -59,12 +59,25 @@ int main(){
     // std::cout<<head->data; 
     // (*head).data;   
 
-    dtstr::CircularLinkedList<int> llist;
-    llist.insert(0, 5);
-    llist.insert(1, 4);
-    llist.insert(5, 7);
-    llist.insert(0, 9);
-    llist.insert(0, 3);
-    llist.insert(1, 0);
+    // dtstr::CircularLinkedList<int> llist;
+    // llist.insert(0, 5);
+    // llist.insert(1, 4);
+    // llist.insert(5, 7);
+    // llist.insert(0, 9);
+    // llist.insert(0, 3);
+    // llist.insert(1, 0);
+
+    dtstr::BinaryTree<int> btree;
+    btree.insert(5);
+    btree.insert(3, "xl");
+    btree.insert(7, "xr");
+    btree.insert(2, "xl", 'r');
+
+    btree.preOrder(btree.root);
+    std::cout<<std::endl;
+    btree.inOrder(btree.root);
+    std::cout<<std::endl;
+    btree.postOrder(btree.root);
+    std::cout<<std::endl;
     return 0;
 }
