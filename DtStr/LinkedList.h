@@ -81,7 +81,6 @@ namespace dtstr{
             DataType get(int index);
             DataType remove(int index);
             void display();
-            void reverse(); 
 
             void message(bool ver);
             bool isEmpty();            
@@ -95,9 +94,6 @@ namespace dtstr{
         public:
             CircularLinkedList(bool ver=true);
             void insert(int index, DataType value);
-            void replace(int index, DataType value);
-            DataType get(int index);
-            DataType remove(int index);
     };
 }
 
