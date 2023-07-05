@@ -53,6 +53,9 @@ namespace dtstr{
         if(child == 'r'){
             prntNode->right = chldNode;
         }
+        if(chldNode != nullptr){
+            chldNode->parent = prntNode;
+        }
     }
 
     template <typename DataType> node<DataType>* BinaryTree<DataType>::getParent(string position, char stop){
@@ -84,6 +87,16 @@ namespace dtstr{
         return pos;
     }
 
+    template <typename DataType> char BinaryTree<DataType>::sibChar(char child){
+        if(child == 'r'){
+            return 'l';
+        }
+        else if(child == 'l'){
+            return 'r';
+        }
+        return child;
+    }
+
     template <typename DataType> void BinaryTree<DataType>::insert(DataType value, string position, char child){
         
         node<DataType>* newNode = new node(value);
@@ -97,14 +110,40 @@ namespace dtstr{
         node<DataType>* parent = getParent(position);
         node<DataType>* target = getChild(parent, position.back());
         
-        newNode->parent = parent;
-
         setChild(parent, newNode, position.back());
         setChild(newNode, target, child);
         
         if(target != nullptr){ 
             target->parent = newNode;
         }
+    }
+
+    template <typename DataType> DataType BinaryTree<DataType>::remove(string position, char child){
+
+        char sib =  sibChar(child);
+
+        node<DataType>* parent = getParent(position);
+        node<DataType>* target = getChild(parent, position.back());
+        
+        node<DataType>* backup = getChild(target, sib);
+        node<DataType>* pos = getChild(target, child);
+
+        setChild(parent, pos, position.back());
+
+        while(true){
+            node<DataType>* temp = getChild(pos, sib);
+            setChild(pos, backup, sib);
+            if(temp == nullptr){
+                break;
+            }
+            backup = temp;
+            pos = getChild(pos, child);
+            if(pos == nullptr){
+                setChild(pos, backup, child);
+            }
+        }
+
+        return target->data;
     }
 
     template <typename DataType> void BinaryTree<DataType>::replace(string position, DataType value){

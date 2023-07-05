@@ -24,6 +24,7 @@ namespace dtstr{
             node<DataType>* getChild(node<DataType>* target, char child);
             void setChild(node<DataType>* prntNode, node<DataType>* chldNode, char child);
             node<DataType>* getParent(std::string position, char stop='p');
+            char sibChar(char child);
 
         public:
             node<DataType>* root;
