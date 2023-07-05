@@ -269,12 +269,17 @@ namespace dtstr{
     }
 
     template <typename DataType> void DoubleLinkedList<DataType>::replace(int index, DataType value){
+        
+        index = index%length; // to use as replace of CiruclarLinkedList
+        
         node_2<DataType>* iter = start;
         for(int indx = 0; indx < index; iter=iter->next, indx++){}
         iter->data = value;
     }
 
     template <typename DataType> DataType DoubleLinkedList<DataType>::get(int index){
+        
+        index = index%length; // to use as replace of CiruclarLinkedList
 
         node_2<DataType>* iter = start;
 
@@ -308,15 +313,9 @@ namespace dtstr{
 
     }
 
-    template <typename DataType> void DoubleLinkedList<DataType>::reverse(){
-        
-        node_2<DataType>* temp = start;
-        start = end;
-        end = temp;
-
-    }
-
     template <typename DataType> DataType DoubleLinkedList<DataType>::remove(int index){
+
+        index = index%length; // to use as replace of CiruclarLinkedList
 
         node_2<DataType>* iter = start;
         DataType result;

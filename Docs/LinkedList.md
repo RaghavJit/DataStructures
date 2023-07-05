@@ -2,7 +2,7 @@
 
 Template Classes for different types of [linked lists](https://www.geeksforgeeks.org/data-structures/linked-list/).
 
-Avalible data types for LinkedList:
+Avalible data types for LinkedList:enhancement
 1. bool
 1. char
 1. int
@@ -43,6 +43,8 @@ message | bool ver | void | takes bool value as argument and sets verbose equal 
 isEmpty | - | bool | returns true if list is empty otherwise false
 ---------------------------------------------------
 
+## CircularLinkedList 
+Is a implimentation of ciruclar double linked list, and is derived from DoubleLinkedList class. All the functions of DoubleLinkedList can be used in CirularLinkedList.
 ### Indexing
 Nodes of linked list can be access by their index using **[]** operator. Using this pointer on linked list will return a pointer to the value stored at the index in linked list.
 ```
