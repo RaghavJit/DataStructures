@@ -67,28 +67,36 @@ int main(){
     // llist.insert(0, 3);
     // llist.insert(1, 0);
 
-    dtstr::BinaryTree<int> btree;
-    btree.insert(6);
-    btree.insert(2, "xl");
-    btree.insert(1, "xll");
-    btree.insert(4, "xlr");
-    btree.insert(3, "xlrl");
-    btree.insert(5, "xlrr");
-    btree.insert(8, "xr");
-    btree.insert(7, "xrl");
-    btree.insert(9, "xrr");
+    // dtstr::BinaryTree<int> btree;
+    // btree.insert(6);
+    // btree.insert(2, "xl");
+    // btree.insert(1, "xll");
+    // btree.insert(4, "xlr");
+    // btree.insert(3, "xlrl");
+    // btree.insert(5, "xlrr");
+    // btree.insert(8, "xr");
+    // btree.insert(7, "xrl");
+    // btree.insert(9, "xrr");
 
-    std::cout<<"deleted: "<<btree.remove("xl", 'r')<<std::endl;
+    // std::cout<<"deleted: "<<btree.remove("xl", 'r')<<std::endl;
 
 
 
-    btree.preOrder(btree.root);
-    std::cout<<std::endl;
+    // btree.preOrder(btree.root);
+    // std::cout<<std::endl;
+    // btree.inOrder(btree.root);
+    // std::cout<<std::endl;
+    // btree.postOrder(btree.root);
+    // std::cout<<std::endl;
+
+    dtstr::BinarySearchTree<int> btree(true, 'r', 'r');
+    btree.insert(5);
+    btree.insert(2);
+    btree.insert(8);
+    btree.insert(3);
+    btree.insert(3);
+    btree.insert(5);
     btree.inOrder(btree.root);
-    std::cout<<std::endl;
-    btree.postOrder(btree.root);
-    std::cout<<std::endl;
-
-    
+    // std::cout<<btree.root->left->right->data;
     return 0;
 }

@@ -116,6 +116,8 @@ namespace dtstr{
         if(target != nullptr){ 
             target->parent = newNode;
         }
+
+        size++;
     }
 
     template <typename DataType> DataType BinaryTree<DataType>::remove(string position, char child){
@@ -142,6 +144,8 @@ namespace dtstr{
                 setChild(pos, backup, child);
             }
         }
+
+        size--;
 
         return target->data;
     }
@@ -184,5 +188,67 @@ namespace dtstr{
         this->postOrder(head->left);
         this->postOrder(head->right);
         cout<<head->data;
+    }
+
+    template class BinarySearchTree<bool>;
+    template class BinarySearchTree<char>;
+    template class BinarySearchTree<int>;
+    template class BinarySearchTree<float>;
+    template class BinarySearchTree<double>;
+    template class BinarySearchTree<long>;
+
+    template <typename DataType> BinarySearchTree<DataType>::BinarySearchTree(bool ver, char bias, char order) : BinaryTree<DataType>(false){
+        if(bias != 'r' && bias != 'l'){
+            cout<<"dtstr >> Error : Invalid bias"<<endl;
+            delete this;
+        }
+        if(order != 'r' && order != 'l'){
+            cout<<"dtstr >> Error : Invalid order"<<endl;
+            delete this;
+        }
+        BinaryTree<DataType>::verbose = ver;
+        treeOrder = order;
+        treeBias = bias;
+        root = nullptr;
+        if(BinaryTree<DataType>::verbose){
+            cout<<"Tree created"<<endl;
+        }
+    }
+
+    template <typename DataType> void BinarySearchTree<DataType>::insert(DataType value){
+        node<DataType>* newNode = new node(value);
+
+        if(root == nullptr){
+            root = newNode;
+            return;
+        }
+
+        node<DataType>* pos = root;
+
+        while(true){    
+            if((treeOrder == 'r' && pos->data > value) || (treeOrder == 'l' && pos->data < value)){
+                if(pos->left == nullptr){
+                    pos->left = newNode;
+                    BinarySearchTree::size++;
+                    break;
+                }
+                pos = pos->left;
+            }
+            else if((treeOrder == 'r' && pos->data < value) || (treeOrder == 'l' && pos->data > value)){
+                if(pos->right == nullptr){
+                    pos->right = newNode;
+                    BinarySearchTree::size++;
+                    break;
+                }
+                pos = pos->right;
+            }
+            else if(pos->data == value){
+                node<DataType>* temp = BinaryTree<DataType>::getChild(pos, treeBias);
+                BinaryTree<DataType>::setChild(pos, newNode, treeBias);
+                BinaryTree<DataType>::setChild(newNode, temp, treeBias);
+                BinarySearchTree::size++;
+                break;
+            }
+        }
     }
 }

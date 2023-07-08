@@ -41,8 +41,14 @@ namespace dtstr{
 
     template <typename DataType> class BinarySearchTree : public BinaryTree<DataType>{
         
+        protected:
+            char treeBias;
+            char treeOrder;
+
         public:
-            BinarySearchTree(bool ver=true);
+            node<DataType>* root;
+
+            BinarySearchTree(bool ver=true, char bias='r', char order='r');
             void insert(DataType value);
             DataType remove(std::string position);
             std::string search(DataType value);
@@ -54,7 +60,7 @@ namespace dtstr{
         public:
             Heap(char type, bool ver=true);
             void insert(DataType value);
-            DataType remove();
+            DataType remove(std::string position);
             void sort();
     };
             
