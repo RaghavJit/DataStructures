@@ -96,7 +96,9 @@ int main(){
     btree.insert(3);
     btree.insert(3);
     btree.insert(5);
+    // std::cout<<btree.remove("xl");
     btree.inOrder(btree.root);
+    std::cout<<btree.search(8);
     // std::cout<<btree.root->left->right->data;
     return 0;
 }

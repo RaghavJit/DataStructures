@@ -44,9 +44,9 @@ namespace dtstr{
         protected:
             char treeBias;
             char treeOrder;
+            node<DataType>* getXtrm(node<DataType>* target, char side);
 
         public:
-            node<DataType>* root;
 
             BinarySearchTree(bool ver=true, char bias='r', char order='r');
             void insert(DataType value);
@@ -54,7 +54,7 @@ namespace dtstr{
             std::string search(DataType value);
             void balance(); 
     };
-
+    
     template <typename DataType> class Heap : public BinaryTree<DataType>{
         
         public:

@@ -59,7 +59,7 @@ namespace dtstr{
     }
 
     template <typename DataType> node<DataType>* BinaryTree<DataType>::getParent(string position, char stop){
-        node<DataType>* pos = root;
+        node<DataType>* pos = this->root;
         bool breakLoop = false;
         int end = position.length()-1;
         if(stop == 'p'){ // default case
@@ -209,7 +209,7 @@ namespace dtstr{
         BinaryTree<DataType>::verbose = ver;
         treeOrder = order;
         treeBias = bias;
-        root = nullptr;
+        BinaryTree<DataType>::root = nullptr;
         if(BinaryTree<DataType>::verbose){
             cout<<"Tree created"<<endl;
         }
@@ -218,12 +218,12 @@ namespace dtstr{
     template <typename DataType> void BinarySearchTree<DataType>::insert(DataType value){
         node<DataType>* newNode = new node(value);
 
-        if(root == nullptr){
-            root = newNode;
+        if(BinaryTree<DataType>::root == nullptr){
+            BinaryTree<DataType>::root = newNode;
             return;
         }
 
-        node<DataType>* pos = root;
+        node<DataType>* pos = BinaryTree<DataType>::root;
 
         while(true){    
             if((treeOrder == 'r' && pos->data > value) || (treeOrder == 'l' && pos->data < value)){
@@ -250,5 +250,62 @@ namespace dtstr{
                 break;
             }
         }
+    }
+    
+    template <typename DataType> node<DataType>* BinarySearchTree<DataType>::getXtrm(node<DataType>* target, char side){
+        char sib = BinaryTree<DataType>::sibChar(side);
+        node<DataType>* pos = BinaryTree<DataType>::getChild(target, side);
+    
+        if(pos == nullptr){
+            return BinaryTree<DataType>::getChild(target, sib);
+        }
+
+        while(BinaryTree<DataType>::getChild(pos, sib) != nullptr){ 
+            pos = BinaryTree<DataType>::getChild(pos, sib);    
+        }
+        
+        node<DataType>* temp = BinaryTree<DataType>::getChild(pos, side); 
+        
+        if(temp != nullptr){
+            BinaryTree<DataType>::setChild(pos->parent, temp, sib);
+        }
+        std::cout << pos->data << std::endl;
+
+        return pos;
+    }
+
+    template <typename DataType> DataType BinarySearchTree<DataType>::remove(string position){
+        node<DataType>* target = BinaryTree<DataType>::getParent(position, 't');
+        node<DataType>* rplcNode = getXtrm(target, treeBias);
+        
+        BinaryTree<DataType>::setChild(target->parent, rplcNode, position.back());
+        BinaryTree<DataType>::setChild(rplcNode, target->left, 'l');
+        BinaryTree<DataType>::setChild(rplcNode, target->right, 'r');
+
+        return target->data;
+    }
+    
+    template <typename DataType> string BinarySearchTree<DataType>::search(DataType value){
+        node<DataType>* pos = this->root;
+        string path = "x";
+        
+        while(pos->data != value){
+            if((pos->data > value && treeOrder == 'r') || (pos->data < value && treeOrder == 'l')){
+                if(pos->left == nullptr){
+                     return "-";
+                }
+                pos = pos->left;
+                path = path + "l";
+            }    
+            else if((pos->data < value && treeOrder == 'r') || (pos->data > value && treeOrder == 'l')){
+                if(pos->right == nullptr){
+                     return "-";
+                }
+                pos = pos->right;    
+                path = path + "r";
+            }    
+        }
+
+        return path;
     }
 }
